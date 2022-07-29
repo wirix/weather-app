@@ -4,13 +4,12 @@ let initialState = {
   latitude: null,
   longitude: null,
   temperature: null,
-  xxx: 100,
+  city: null,
 }
 
 const WeatherReducer = (state = initialState, action) => {
   switch(action.type) {
     case SET_GEOLOCATION:
-      debugger
       return {
         ...state,
         latitude: action.latitude,
