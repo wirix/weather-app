@@ -1,9 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import styles from './App.module.css';
+import WeatherContainer from './components/Weather/WeatherContainer';
 
-function App() {
+const App = (props) => {
   return (
-    <div>jjjjj</div>
+    <BrowserRouter>
+      <div className={styles.app}>
+        <input />
+        <WeatherContainer />
+      </div>
+    </BrowserRouter>
   );
 }
 
