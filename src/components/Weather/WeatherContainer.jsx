@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux"
-import { currentWeather } from "../../api/api";
-import { setGeolocation } from "../../redux/weather-reducer";
+import { setGeolocation, getMainData } from "../../redux/weather-reducer";
 import Weather from "./Weather"
 
 class WeatherContainer extends React.Component {
@@ -14,7 +13,7 @@ class WeatherContainer extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.latitude !== prevProps.latitude) {
-      currentWeather.getCurrentData(this.props.latitude, this.props.longitude)
+      this.props.getMainData(this.props.latitude, this.props.longitude)
     }
   }
   
@@ -30,4 +29,4 @@ let mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps, { setGeolocation })(WeatherContainer)
+export default connect(mapStateToProps, { setGeolocation, getMainData })(WeatherContainer)

@@ -12,7 +12,7 @@ const Weather = (props) => {
         <div className={styles.current__data}>
           <img alt='' src={stormImg} />
           <div className={styles.data}>
-            <div className={styles.temperature}>18º C</div>
+            <div className={styles.temperature}>{props.temperature}º C</div>
             <div className={styles.city}>Krasnoyarsk</div>
           </div>
         </div>
