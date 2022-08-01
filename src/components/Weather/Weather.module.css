@@ -1,14 +1,11 @@
-.container {
-  padding: 24px;
-}
-
-.weather {
+.content {
   font-family: 'Red Hat Display', sans-serif;
 
   display: flex;
   flex-direction: column;
   width: 100%;
   border-radius: 10px;
+  padding: 24px;
 
   background: linear-gradient(90deg,#4C4E53, #0B1223);
 }
@@ -49,4 +46,30 @@
 .update i {
   font-size: 14px;
   margin-left: 3px;
+}
+
+.staticInput {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 7px;
+  margin-bottom: 24px;
+}
+
+.input__text {
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Red Hat Display', sans-serif;
+  color: #201C1C;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+}
+
+.input i {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2E3A59;
+  margin-right: 5px;
 }

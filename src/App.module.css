@@ -1,11 +1,13 @@
 .app {
-  background: url('./assets/backgrounds/night.jpg') no-repeat center;
+  /* background: url('./assets/backgrounds/night.jpg') no-repeat center; */
+  background-color: #FBFBFB;
   background-size: cover;
   height: 100vh;
   padding: 0 16px 16px 16px;
 }
 
 body {
+  font-family: 'Red Hat Display', sans-serif;
   font-size: 14px;
   font-weight: 400;
   margin: 0;

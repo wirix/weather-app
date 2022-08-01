@@ -21,7 +21,8 @@ const WeatherReducer = (state = initialState, action) => {
     case SET_MAIN_DATA:
       return {
         ...state,
-        temperature: action.temperature
+        temperature: action.temperature,
+        city: action.city,
       }
     default:
       return state
@@ -29,14 +30,20 @@ const WeatherReducer = (state = initialState, action) => {
 }
 
 export const setGeolocation = (latitude, longitude) => ({ type: SET_GEOLOCATION, latitude, longitude })
-export const setMainData = (temperature) => ({ type: SET_MAIN_DATA, temperature })
+export const setMainData = (temperature, city) => ({ type: SET_MAIN_DATA, temperature, city })
 
 export const getMainData = (latitude, longitude) => async (dispatch) => {
   let response = await currentWeather.getCurrentData(latitude, longitude)
-  dispatch(setMainData(response.data.main.temp))
+  let data = response.data
+  dispatch(setMainData(data.main.temp, data.name))
   console.log(response)
 }
 
-
+export const getMainDataByCity = (city) => async (dispatch) => {
+  let response = await currentWeather.getCurrentDataByCity(city)
+  let data = response.data
+  dispatch(setMainData(data.main.temp, data.name))
+  console.log(response)
+}
 
 export default WeatherReducer

@@ -6,7 +6,6 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <div className={styles.app}>
-        <input />
         <WeatherContainer />
       </div>
     </BrowserRouter>

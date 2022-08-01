@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux"
 import { setGeolocation, getMainData } from "../../redux/weather-reducer";
 import Weather from "./Weather"
+import { getMainDataByCity } from "../../redux/weather-reducer"
 
 class WeatherContainer extends React.Component {
   componentDidMount() {
@@ -26,7 +27,8 @@ let mapStateToProps = (state) => ({
   temperature: state.weather.temperature,
   latitude: state.weather.latitude,
   longitude: state.weather.longitude,
+  city: state.weather.city,
 })
 
 
-export default connect(mapStateToProps, { setGeolocation, getMainData })(WeatherContainer)
+export default connect(mapStateToProps, { setGeolocation, getMainData, getMainDataByCity })(WeatherContainer)
