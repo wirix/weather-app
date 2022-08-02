@@ -9,7 +9,7 @@ let initialState = {
   longitude: null,
   temperature: null,
   city: null,
-  predicts: {}
+  predicts: null,
 }
 
 const WeatherReducer = (state = initialState, action) => {

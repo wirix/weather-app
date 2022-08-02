@@ -27,7 +27,6 @@ const Weather = (props) => {
       </button>
     </div>
   )
-
   return (
     <div className={styles.weather}>
       <div className={styles.container}>

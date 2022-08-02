@@ -20,7 +20,9 @@ class WeatherContainer extends React.Component {
   }
   
   render() {
-    return <Weather {...this.props}/>
+    return (
+      <Weather {...this.props}/>
+    )
   }
 }
 
