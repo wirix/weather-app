@@ -3,9 +3,18 @@ import stylesBtn from './../Form/Form.module.css'
 import stormImg from './../../assets/weather-icons/night_storm.png'
 import Form from '../Form/Form'
 import { useState } from 'react'
+import PredictsContainer from '../Predicts/PredictsContainer'
+import Preloader from '../Preloader/Preloader'
 
 const Weather = (props) => {
   let [editMode, setEditMode] = useState(false)
+  if (!props.temperature) {
+    return <Preloader />
+  }
+
+  const integer = (num) => {
+    return num.toFixed(0)
+  }
 
   const StaticForm = () => (
     <div className={styles.staticInput}>
@@ -25,7 +34,8 @@ const Weather = (props) => {
         {
           editMode
             ? <Form getMainDataByCity={props.getMainDataByCity}
-              setEditMode={setEditMode} />
+              setEditMode={setEditMode}
+              getDataNextThreeHoursByCity={props.getDataNextThreeHoursByCity} />
             : <StaticForm />
         }
         <div className={styles.content}>
@@ -36,7 +46,7 @@ const Weather = (props) => {
           <div className={styles.current__data}>
             <img alt='' src={stormImg} />
             <div className={styles.data}>
-              <div className={styles.temperature}>{props.temperature}º C</div>
+              <div className={styles.temperature}>{integer(props.temperature)}º C</div>
               <div className={styles.city}>{props.city}</div>
             </div>
           </div>
@@ -45,7 +55,7 @@ const Weather = (props) => {
             <i className="ri-restart-line"></i>
           </div>
         </div>
-        
+        <PredictsContainer />
       </div>
     </div>
   )

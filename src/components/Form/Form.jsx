@@ -1,17 +1,13 @@
 import { Formik } from "formik"
-import { useEffect } from "react"
 import styles from './Form.module.css'
 
 const Form = (props) => {
-  // useEffect(() => {
-  //   props.setEditMode(false)
-  // })
-
   return (
     <Formik
       initialValues={{ city: '' }}
       onSubmit={values => {
         props.getMainDataByCity(values.city)
+        props.getDataNextThreeHoursByCity(values.city)
         props.setEditMode(false)
       }}
     >
