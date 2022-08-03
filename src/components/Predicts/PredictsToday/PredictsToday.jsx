@@ -26,7 +26,6 @@ const PredictsToday = (props) => {
 
   const getWeekDay = (date) => {
     let days = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ']
-    console.log(days[date])
     return days[date]
   }
 
