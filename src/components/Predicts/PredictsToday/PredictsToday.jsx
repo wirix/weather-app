@@ -18,11 +18,33 @@ const PredictsToday = (props) => {
       return `${intHour}:00 AM`
     }
   }
-
-  let predictDay = new Date(props.predicts[0].dt_txt).getDay()
-  let predictDate = new Date(props.predicts[0].dt_txt).getDate()
+  let predictDate = new Date(props.predicts[0].dt_txt).getDate() /// for array(left side)
   let predictMonth = new Date(props.predicts[0].dt_txt).getMonth() + 1
 
+  const setMaxTemperature = (arr) => {
+    let arrMaxTemperature = []
+    for (let i = 0; i < arr.length; i++) {
+      arrMaxTemperature = [...arrMaxTemperature, arr[i].main.temp_max]
+    }
+    let maxTemperature = Math.round(Math.max.apply(null, arrMaxTemperature))
+    if (maxTemperature > 0) {
+      return `+${maxTemperature}`
+    } else {
+      return maxTemperature
+    }
+  }
+  const setMinTemperature = (arr) => {
+    let arrMinTemperature = []
+    for (let i = 0; i < arr.length; i++) {
+      arrMinTemperature = [...arrMinTemperature, arr[i].main.temp_min]
+    }
+    let minTemperature = Math.round(Math.min.apply(null, arrMinTemperature))
+    if (minTemperature > 0) {
+      return `+${minTemperature}`
+    } else {
+      return minTemperature
+    }
+  }
 
   const getWeekDay = (date) => {
     let days = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ']
@@ -30,13 +52,15 @@ const PredictsToday = (props) => {
   }
 
   const setDate = (month, day) => {
-    if (day === new Date().getDate() && day >= 10) {
+    let predictDay = new Date(props.predicts[0].dt_txt).getDay() /// for day(right side)
+    let date = new Date().getDate()
+    if (day === date && day >= 10) {
       return `Сегодня ${month}.${day}`
-    } else if (day === new Date().getDate() && day < 10) {
+    } else if (day === date && day < 10) {
       return `Сегодня ${month}.0${day}`
-    } else if (day === new Date().getDate() + 1 && day >= 10) {
+    } else if (day === date + 1 && day >= 10) {
       return `Завтра ${month}.${day}`
-    } else if (day === new Date().getDate() + 1 && day < 10) {
+    } else if (day === date + 1 && day < 10) {
       return `Завтра ${month}.0${day}`
     } else if (day < 10) {
       return `${getWeekDay(predictDay)} ${month}.0${day}`
@@ -47,8 +71,15 @@ const PredictsToday = (props) => {
 
   return (
     <div>
-      <div className={styles.title}>{setDate(predictMonth, predictDate)}</div>
-        <Swiper
+      <div className={styles.info}>
+        <span className={styles.title}>{setDate(predictMonth, predictDate)}</span>
+        <span className={styles.info__temp}>
+          <span className={styles.max__temp}>{setMaxTemperature(props.predicts)}º</span>
+          <span className={styles.slash}> / </span>
+          <span className={styles.min__temp}>{setMinTemperature(props.predicts)}º</span>
+        </span>
+      </div>
+      <Swiper
           className={styles.content}
           slidesPerView={4}
           spaceBetween={10}

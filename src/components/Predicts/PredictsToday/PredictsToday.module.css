@@ -36,6 +36,30 @@
   font-size: 18px;
   font-weight: 600;
   color: #494343;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 15px;
   margin-bottom: 7px;
+}
+
+.info__temp {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.max__temp {
+  color: tomato;
+}
+
+.min__temp {
+  color: rgb(32, 222, 248);
+}
+
+.slash {
+  font-size: 17px;
+  color: #000000;
 }
