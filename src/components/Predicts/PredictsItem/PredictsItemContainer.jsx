@@ -1,8 +1,5 @@
-import React from "react";
 import { connect } from "react-redux"
 import PredictsItem from "./PredictsItem";
-import { getIcon } from '../../../redux/weather-reducer'
-import Preloader from "../../Preloader/Preloader";
 
 // class PredictItemContainer extends React.Component {
 //   componentDidMount() {

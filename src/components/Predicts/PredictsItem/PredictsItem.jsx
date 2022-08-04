@@ -1,5 +1,4 @@
 import styles from './PredictsItem.module.css'
-import icon from './../../../assets/weather-icons/night_storm.png'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -69,11 +68,6 @@ const PredictsItem = (props) => {
     }
   }
 
-  // const setIcon = (arr) => {
-  //   debugger
-  //   // return props.icons
-  //   props.getIcon(arr.weather[0].id)
-  // }
   return (
     <div className={styles.container}>
       <div className={styles.info}>
@@ -106,5 +100,5 @@ const PredictsItem = (props) => {
     
   )
 }
-/// props.icons[p.weather[0].id]
+
 export default PredictsItem

@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { setGeolocation, getMainData, getDataNextThreeHoursByCity, getDataNextThreeHours } from "../../redux/weather-reducer";
 import Weather from "./Weather"
 import { getMainDataByCity } from "../../redux/weather-reducer"
+import Preloader from "../Preloader/Preloader";
 
 class WeatherContainer extends React.Component {
   componentDidMount() {
@@ -21,7 +22,13 @@ class WeatherContainer extends React.Component {
   
   render() {
     return (
-      <Weather {...this.props}/>
+      <>
+        {
+          (this.props.predicts === null)
+          ? <Preloader />
+          : <Weather {...this.props}/>
+        }
+      </>
     )
   }
 }
@@ -31,6 +38,7 @@ let mapStateToProps = (state) => ({
   latitude: state.weather.latitude,
   longitude: state.weather.longitude,
   city: state.weather.city,
+  predicts: state.weather.predicts,
 })
 
 export default connect(mapStateToProps, { setGeolocation, getDataNextThreeHours, getMainData, getMainDataByCity, getDataNextThreeHoursByCity })(WeatherContainer)
