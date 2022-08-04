@@ -3,6 +3,7 @@ import { currentWeather } from "../api/api"
 const SET_GEOLOCATION = 'SET_GEOLOCATION'
 const SET_MAIN_DATA = 'SET_MAIN_DATA'
 const SET_DATA_NEXT_THREE_HOURS_BY_CITY = 'GET_DATA_NEXT_THREE_HOURS_BY_CITY'
+const SET_ICON = 'SET_ICON'
 
 let initialState = {
   latitude: null,
@@ -10,6 +11,7 @@ let initialState = {
   temperature: null,
   city: null,
   predicts: null,
+  // icons: [],
 }
 
 const WeatherReducer = (state = initialState, action) => {
@@ -31,6 +33,15 @@ const WeatherReducer = (state = initialState, action) => {
         ...state,
         predicts: action.predicts
       }
+    // case SET_ICON:
+    //   return {
+    //     ...state,
+    //     ///filter double icons with id
+    //     icons: {
+    //       ...state.icons,
+    //       [action.id]: action.icon
+    //     }
+    //   }
     default:
       return state
   }
@@ -38,7 +49,8 @@ const WeatherReducer = (state = initialState, action) => {
 
 export const setGeolocation = (latitude, longitude) => ({ type: SET_GEOLOCATION, latitude, longitude })
 export const setMainData = (temperature, city) => ({ type: SET_MAIN_DATA, temperature, city })
-export const setDataNextThreeHours = (predicts) => ({ type: SET_DATA_NEXT_THREE_HOURS_BY_CITY, predicts})
+export const setDataNextThreeHours = (predicts) => ({ type: SET_DATA_NEXT_THREE_HOURS_BY_CITY, predicts })
+// export const setIcon = (icon, id) => ({ type: SET_ICON, icon, id })
 
 export const getMainData = (latitude, longitude) => async (dispatch) => {
   let response = await currentWeather.getCurrentData(latitude, longitude)
@@ -62,5 +74,10 @@ export const getDataNextThreeHoursByCity = (city) => async (dispatch) => {
   let response = await currentWeather.getDataNextThreeHoursByCity(city)
   dispatch(setDataNextThreeHours(response.data.list))
 }
+
+// export const getIcon = (icon, id) => async (dispatch) => {
+//   let response = await currentWeather.getIcon(icon)
+//   dispatch(setIcon(response.data, id))
+// }
 
 export default WeatherReducer

@@ -1,10 +1,10 @@
-import styles from './PredictsToday.module.css'
+import styles from './PredictsItem.module.css'
 import icon from './../../../assets/weather-icons/night_storm.png'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const PredictsToday = (props) => {
+const PredictsItem = (props) => {
   const integer = (num) => {
     return num.toFixed(0)
   }
@@ -69,8 +69,13 @@ const PredictsToday = (props) => {
     }
   }
 
+  // const setIcon = (arr) => {
+  //   debugger
+  //   // return props.icons
+  //   props.getIcon(arr.weather[0].id)
+  // }
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.info}>
         <span className={styles.title}>{setDate(predictMonth, predictDate)}</span>
         <span className={styles.info__temp}>
@@ -78,6 +83,7 @@ const PredictsToday = (props) => {
           <span className={styles.slash}> / </span>
           <span className={styles.min__temp}>{setMinTemperature(props.predicts)}º</span>
         </span>
+        <span className={styles.arrow__right}><i className="ri-arrow-right-s-line"></i></span>
       </div>
       <Swiper
           className={styles.content}
@@ -89,7 +95,7 @@ const PredictsToday = (props) => {
         {
           props.predicts.map(p => (
             <SwiperSlide className={styles.item} key={p.dt_txt}>
-              <img src={icon} alt="" />
+              <img src={`http://openweathermap.org/img/wn/${p.weather[0].icon}@2x.png`} alt="" />
               <div className={styles.temperature}>{integer(p.main.temp)}º</div>
               <div className={styles.time}>{intHour(p.dt_txt)}</div>
             </SwiperSlide>
@@ -100,5 +106,5 @@ const PredictsToday = (props) => {
     
   )
 }
-
-export default PredictsToday
+/// props.icons[p.weather[0].id]
+export default PredictsItem

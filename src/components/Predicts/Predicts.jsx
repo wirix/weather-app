@@ -1,6 +1,6 @@
 import styles from './Predicts.module.css'
 import Preloader from '../Preloader/Preloader';
-import PredictsToday from './PredictsToday/PredictsToday';
+import PredictsItemContainer from './PredictsItem/PredictsItemContainer';
 //  sortedPredicts.map(s => {
 // debugger
 // const date = new Date(`${s.dt_txt}`).getDate()
@@ -13,13 +13,13 @@ const Predicts = (props) => {
   for (let i = 0; i < (props.predicts.length / 8); i++) {
     sortedPredicts = [...sortedPredicts, props.predicts.filter(p => new Date().getDate() + i === new Date(p.dt_txt).getDate())]
   }
-  
+
   return (
     <div className={styles.predicts}>
       {
         sortedPredicts.map(s => (
           <>
-            <PredictsToday predicts={s} />
+            <PredictsItemContainer key={s[0].dt} predicts={s} />
           </>
         ))
       }
