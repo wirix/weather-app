@@ -9,9 +9,11 @@ const App = (props) => {
     <HashRouter>
       <div className={styles.app}>
         <Routes>
-          <Route path='/' index element={<Navigate to='/home/*' />} />
+          <Route path='/' index element={<Navigate to='/home' />} />
           <Route path='/home/*' element={<WeatherContainer />} />
-          <Route path='/info/*' element={<InfoContainer />} />
+          <Route path='/info' element={<InfoContainer />} >
+            <Route path=':list' element={<InfoContainer />} />
+          </Route>
           <Route path='*' element={<ErrorPage />} />
         </Routes>
       </div>

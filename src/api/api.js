@@ -25,7 +25,10 @@ export const currentWeather = {
   getDataNextThreeHoursByCity(city) {
     return axios.get(`${base.url}forecast?${base.params}&appid=${base.key}&q=${city}`)
   },
-  // getIcon(iconId) {
-  //   return axios.get(`http://openweathermap.org/img/wn/${iconId}@2x.png`)
-  // }
+  getAQI(latitude, longitude) {
+    return axios.get(`${base.url}air_pollution?appid=${base.key}&lat=${latitude}&lon=${longitude}`)
+    // .then(response => {
+    //   debugger
+    // })
+  }
 }

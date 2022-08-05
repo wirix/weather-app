@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import SwiperItems from './SwiperItems/SwiperItems';
 
 const PredictsItem = (props) => {
-  let predictDate = new Date(props.predicts[0].dt_txt).getDate() /// for array(left side)
+  let predictDate = new Date(props.predicts[0].dt_txt).getDate() /// for array(left side) and find numPage
   let predictMonth = new Date(props.predicts[0].dt_txt).getMonth() + 1
 
   const setMaxTemperature = (arr) => {
@@ -54,9 +54,13 @@ const PredictsItem = (props) => {
     }
   }
 
+  let currentDate = new Date().getDate()
+
+  let list = predictDate - currentDate + 1
+
   return (
     <div className={styles.container}>
-      <NavLink to='/info'>
+      <NavLink to={`/info/${list}`}>
         <div className={styles.info}>
           <span className={styles.title}>{setDate(predictMonth, predictDate)}</span>
           <span className={styles.info__temp}>

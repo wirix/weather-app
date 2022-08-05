@@ -14,7 +14,7 @@ const Card = (props) => {
   }
 
   const addNum = (num) => {
-    if (num > 10) {
+    if (num >= 10) {
       return num
     } else {
       return `0${num}`

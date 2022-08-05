@@ -4,6 +4,10 @@ import { useEffect, useState } from 'react'
 import reloadStatic from '../../assets/ReloadStatic.svg'
 import reloadAnimated from '../../assets/ReloadAnimated.svg'
 import SwiperItems from '../Predicts/PredictsItem/SwiperItems/SwiperItems'
+import blazeLine from '../../assets/weather-icons/blaze-line.jpg'
+import mistLine from '../../assets/weather-icons/mist-line.jpg'
+import hazeLine from '../../assets/weather-icons/haze-2-line.jpg'
+import windyLine from '../../assets/weather-icons/windy-line.jpg'
 
 const Info = (props) => {
   let [editMode, setEditMode] = useState(false)
@@ -24,7 +28,7 @@ const Info = (props) => {
   }
 
   const addNum = (num) => {
-    if (num > 10) {
+    if (num >= 10) {
       return num
     } else {
       return `0${num}`
@@ -77,11 +81,66 @@ const Info = (props) => {
       </div>
       <div className={styles.container}>
         <div className={styles.title__black}>Погода</div>
-        <SwiperItems predicts={sortedPredicts[0]} />
+        <SwiperItems predicts={sortedPredicts[Number(props.router.params.list) - 1]} />
       </div>
       <div className={styles.container}>
-        <div className={styles.title__black}>Информация</div>
-        <SwiperItems predicts={sortedPredicts[0]} />
+        <div className={styles.blocks}>
+          <div className={styles.title__black}>Информация</div>
+          <div className={styles.items}>
+            <div className={styles.item__big}>
+              <div className={styles.count__big}>
+                {props.aqi} 
+                <div className={styles.fontText}> / </div> 5
+              </div>
+              <div className={styles.item__description}>
+                <div className={styles.item__big__title}>ИКВ - очень хорошо</div>
+                <div className={styles.item__big__text}>
+                  В настоящее время качество воздуха в вашем районе очень хорошее.
+                </div>
+              </div>
+            </div>
+            <div className={styles.double__item}>
+              <div className={styles.item}>
+                <img className={styles.img} src={blazeLine} alt="" />
+                <div className={styles.item__content}>
+                  <div className={styles.item__title}>
+                    <div className={styles.font__item__title}>{props.clouds}%</div>
+                  </div>
+                  <div className={styles.item__text}>Облачность</div>
+                </div>
+              </div>
+              <div className={styles.item}>
+                <img className={styles.img} src={hazeLine} alt="" />
+                <div className={styles.item__content}>
+                  <div className={styles.item__title}>
+                    <div className={styles.font__item__title}>{props.pressure} гПа</div>
+                  </div>
+                  <div className={styles.item__text}>Давление</div>
+                </div>
+              </div>
+            </div>
+            <div className={styles.double__item}>
+              <div className={styles.item}>
+                <img className={styles.img} src={windyLine} alt="" />
+                <div className={styles.item__content}>
+                  <div className={styles.item__title}>
+                    <div className={styles.font__item__title}>{props.wind} км/ч</div>
+                  </div>
+                  <div className={styles.item__text}>Ветер</div>
+                </div>
+              </div>
+              <div className={styles.item}>
+                <img className={styles.img} src={mistLine} alt="" />
+                <div className={styles.item__content}>
+                  <div className={styles.item__title}>
+                    <div className={styles.font__item__title}>{props.humidity}%</div>
+                  </div>
+                  <div className={styles.item__text}>Влажность</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
