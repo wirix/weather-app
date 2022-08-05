@@ -1,14 +1,18 @@
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import styles from './App.module.css';
+import InfoContainer from './components/Info/InfoContainer';
 import WeatherContainer from './components/Weather/WeatherContainer';
 
 const App = (props) => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className={styles.app}>
-        <WeatherContainer />
+        <Routes>
+          <Route path='/home/*' element={<WeatherContainer />} />
+          <Route path='/info/*' element={<InfoContainer />} />
+        </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

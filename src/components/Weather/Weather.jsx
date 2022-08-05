@@ -33,7 +33,7 @@ const Weather = (props) => {
               getDataNextThreeHoursByCity={props.getDataNextThreeHoursByCity} />
             : <StaticForm />
         }
-        <Card temperature={props.temperature} city={props.city} icon={props.predicts[0].weather[0].icon}/>
+        <Card description={props.description} temperature={props.temperature} city={props.city} icon={props.icon}/>
         <PredictsContainer />
       </div>
     </div>

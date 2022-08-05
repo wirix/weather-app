@@ -1,22 +1,8 @@
 import styles from './PredictsItem.module.css'
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
+import { NavLink } from 'react-router-dom'
+import SwiperItems from './SwiperItems/SwiperItems';
 
 const PredictsItem = (props) => {
-  const integer = (num) => {
-    return num.toFixed(0)
-  }
-  const intHour = (hour) => {
-    const intHour = new Date(`${hour}`).getHours()
-    if (intHour > 12) {
-      return `${intHour - 12}:00 PM`
-    } else if (intHour === 12) {
-      return `${intHour}:00 PM`
-    } else {
-      return `${intHour}:00 AM`
-    }
-  }
   let predictDate = new Date(props.predicts[0].dt_txt).getDate() /// for array(left side)
   let predictMonth = new Date(props.predicts[0].dt_txt).getMonth() + 1
 
@@ -70,32 +56,19 @@ const PredictsItem = (props) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.info}>
-        <span className={styles.title}>{setDate(predictMonth, predictDate)}</span>
-        <span className={styles.info__temp}>
-          <span className={styles.max__temp}>{setMaxTemperature(props.predicts)}º</span>
-          <span className={styles.slash}> / </span>
-          <span className={styles.min__temp}>{setMinTemperature(props.predicts)}º</span>
-        </span>
-        <span className={styles.arrow__right}><i className="ri-arrow-right-s-line"></i></span>
-      </div>
-      <Swiper
-          className={styles.content}
-          slidesPerView={4}
-          spaceBetween={10}
-          pagination={{
-            clickable: true,
-        }}>
-        {
-          props.predicts.map(p => (
-            <SwiperSlide className={styles.item} key={p.dt_txt}>
-              <img src={`http://openweathermap.org/img/wn/${p.weather[0].icon}@2x.png`} alt="" />
-              <div className={styles.temperature}>{integer(p.main.temp)}º</div>
-              <div className={styles.time}>{intHour(p.dt_txt)}</div>
-            </SwiperSlide>
-          ))
-        }
-      </Swiper>
+      <NavLink to='/info'>
+        <div className={styles.info}>
+          <span className={styles.title}>{setDate(predictMonth, predictDate)}</span>
+          <span className={styles.info__temp}>
+            <span className={styles.max__temp}>{setMaxTemperature(props.predicts)}º</span>
+            <span className={styles.slash}> / </span>
+            <span className={styles.min__temp}>{setMinTemperature(props.predicts)}º</span>
+          </span>
+          <i className="ri-arrow-right-s-line"></i>
+        </div>
+      </NavLink>
+      
+      <SwiperItems predicts={props.predicts} />
     </div>
     
   )

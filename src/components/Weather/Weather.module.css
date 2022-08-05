@@ -23,3 +23,7 @@
   color: #2E3A59;
   margin-right: 5px;
 }
+
+.container {
+  padding: 0 16px 10px;
+}

@@ -1,31 +1,8 @@
 import { connect } from "react-redux"
 import PredictsItem from "./PredictsItem";
 
-// class PredictItemContainer extends React.Component {
-//   componentDidMount() {
-//     for (let i = 0; i < this.props.predicts.length; i++) {
-//       this.props.getIcon(this.props.predicts[i].weather[0].icon, this.props.predicts[i].weather[0].id)
-//     }
-//   }
-
-//   render() {
-//     return (
-//       <>
-//         {
-//           (this.props.icons.length !== 0) ? <PredictsItem {...this.props} /> : <Preloader />
-//         }
-//       </>
-//     )
-//   }
-// }
-
-
-
-
-
-
 let mapStateToProps = (state) => ({
-  icons: state.weather.icons
+  icons: state.weather.icons,
 })
 
 let PredictItemContainer = connect(mapStateToProps, null)(PredictsItem)

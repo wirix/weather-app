@@ -1,0 +1,79 @@
+.head {
+  background: linear-gradient(90deg,#4C4E53, #0B1223);
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 15px;
+  margin-bottom: 28px;
+}
+
+.leftLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.leftLink i {
+  font-size: 20px;
+  color: #fff;
+}
+
+.weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date {
+  font-size: 14px;
+}
+
+.img {
+
+}
+
+.temperature {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.description {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 32px;
+}
+
+.update {
+  font-size: 14px;
+  padding-bottom: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.update i {
+  font-size: 14px;
+  margin-left: 3px;
+}
+
+.reload {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+}
+
+.title__black {
+  font-weight: 600;
+  font-size: 20px;
+  color: #413d3d;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}

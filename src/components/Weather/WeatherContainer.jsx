@@ -24,7 +24,7 @@ class WeatherContainer extends React.Component {
     return (
       <>
         {
-          (this.props.predicts === null)
+          (this.props.predicts && this.props.icon === null)
           ? <Preloader />
           : <Weather {...this.props}/>
         }
@@ -39,6 +39,8 @@ let mapStateToProps = (state) => ({
   longitude: state.weather.longitude,
   city: state.weather.city,
   predicts: state.weather.predicts,
+  description: state.weather.description,
+  icon: state.weather.icon,
 })
 
 export default connect(mapStateToProps, { setGeolocation, getDataNextThreeHours, getMainData, getMainDataByCity, getDataNextThreeHoursByCity })(WeatherContainer)

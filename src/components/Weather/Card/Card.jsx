@@ -13,6 +13,14 @@ const Card = (props) => {
     return num.toFixed(0)
   }
 
+  const addNum = (num) => {
+    if (num > 10) {
+      return num
+    } else {
+      return `0${num}`
+    }
+  }
+
   let arrOfMonths = ['Январь', 'февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
   let arrOfDays = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
   
@@ -40,17 +48,17 @@ const Card = (props) => {
     <div className={styles.content}>
       <div className={styles.info}>
         <div className={styles.day}>{arrOfDays[day]}, {date} {arrOfMonths[month]} {year}</div>
-        <div className={styles.time}>{hours}:{minutes}</div>
+        <div className={styles.time}>{hours}:{addNum(minutes)}</div>
       </div>
       <div className={styles.current__data}>
         <img alt='' src={`http://openweathermap.org/img/wn/${props.icon}@2x.png`} />
         <div className={styles.data}>
           <div className={styles.temperature}>{integer(props.temperature)}º C</div>
-          <div className={styles.city}>{props.city}</div>
+          <div className={styles.description}>{props.description}</div>
         </div>
       </div>
       <div className={styles.update}>
-        Обновление: {hours}:{minutes} 
+        Обновление: {hours}:{addNum(minutes)} 
         {
           !editMode
             ? <img className={styles.reload} src={reloadStatic} onClick={() => reload()} alt="" />

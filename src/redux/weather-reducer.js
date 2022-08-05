@@ -10,6 +10,8 @@ let initialState = {
   temperature: null,
   city: null,
   predicts: null,
+  description: null,
+  icon: null,
 }
 
 const WeatherReducer = (state = initialState, action) => {
@@ -23,8 +25,10 @@ const WeatherReducer = (state = initialState, action) => {
     case SET_MAIN_DATA:
       return {
         ...state,
-        temperature: action.temperature,
+        temperature: Math.round(action.temperature),
         city: action.city,
+        description: action.description,
+        icon: action.icon,
       }
     case SET_DATA_NEXT_THREE_HOURS_BY_CITY:
       return {
@@ -37,20 +41,21 @@ const WeatherReducer = (state = initialState, action) => {
 }
 
 export const setGeolocation = (latitude, longitude) => ({ type: SET_GEOLOCATION, latitude, longitude })
-export const setMainData = (temperature, city) => ({ type: SET_MAIN_DATA, temperature, city })
+export const setMainData = (temperature, city, description, icon) => ({ type: SET_MAIN_DATA, temperature, city, description, icon })
 export const setDataNextThreeHours = (predicts) => ({ type: SET_DATA_NEXT_THREE_HOURS_BY_CITY, predicts })
 
 export const getMainData = (latitude, longitude) => async (dispatch) => {
   let response = await currentWeather.getCurrentData(latitude, longitude)
   let data = response.data
-  dispatch(setMainData(data.main.temp, data.name))
+  debugger
+  dispatch(setMainData(data.main.temp, data.name, data.weather[0].description, data.weather[0].icon))
   console.log(response)
 }
 
 export const getMainDataByCity = (city) => async (dispatch) => {
   let response = await currentWeather.getCurrentDataByCity(city)
   let data = response.data
-  dispatch(setMainData(data.main.temp, data.name))
+  dispatch(setMainData(data.main.temp, data.name, data.weather[0].description, data.weather[0].icon))
 }
 
 export const getDataNextThreeHours = (latitude, longitude) => async (dispatch) => {
