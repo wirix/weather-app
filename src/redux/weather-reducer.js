@@ -47,7 +47,6 @@ export const setDataNextThreeHours = (predicts) => ({ type: SET_DATA_NEXT_THREE_
 export const getMainData = (latitude, longitude) => async (dispatch) => {
   let response = await currentWeather.getCurrentData(latitude, longitude)
   let data = response.data
-  debugger
   dispatch(setMainData(data.main.temp, data.name, data.weather[0].description, data.weather[0].icon))
   console.log(response)
 }
