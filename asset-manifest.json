@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/weather-app/static/css/main.e43052b4.css",
-    "main.js": "/weather-app/static/js/main.afeca70b.js",
+    "main.css": "/weather-app/static/css/main.106b95b5.css",
+    "main.js": "/weather-app/static/js/main.348ff59f.js",
     "static/js/787.13d76ca7.chunk.js": "/weather-app/static/js/787.13d76ca7.chunk.js",
-    "static/media/ReloadAnimated.svg": "/weather-app/static/media/ReloadAnimated.b8828e0b384dd389e69c898920aa7a77.svg",
+    "static/media/ReloadAnimated.svg": "/weather-app/static/media/ReloadAnimated.dff72935737ec1d24c228ad974b996a8.svg",
     "index.html": "/weather-app/index.html",
-    "static/media/ReloadStatic.svg": "/weather-app/static/media/ReloadStatic.28852f254efbb6dda258e1fea515b6d2.svg",
     "static/media/Preloader.svg": "/weather-app/static/media/Preloader.2ba3164043096450b9130416013dcba0.svg",
-    "main.e43052b4.css.map": "/weather-app/static/css/main.e43052b4.css.map",
-    "main.afeca70b.js.map": "/weather-app/static/js/main.afeca70b.js.map",
+    "static/media/ReloadStatic.svg": "/weather-app/static/media/ReloadStatic.54c0ae4658ac74e682150e72d38f5b23.svg",
+    "main.106b95b5.css.map": "/weather-app/static/css/main.106b95b5.css.map",
+    "main.348ff59f.js.map": "/weather-app/static/js/main.348ff59f.js.map",
     "787.13d76ca7.chunk.js.map": "/weather-app/static/js/787.13d76ca7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e43052b4.css",
-    "static/js/main.afeca70b.js"
+    "static/css/main.106b95b5.css",
+    "static/js/main.348ff59f.js"
   ]
 }
