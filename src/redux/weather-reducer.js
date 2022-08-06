@@ -65,7 +65,6 @@ export const getMainData = (latitude, longitude) => async (dispatch) => {
   let response = await currentWeather.getCurrentData(latitude, longitude)
   let data = response.data
   dispatch(setMainData(data.main.temp, data.name, data.weather[0].description, data.weather[0].icon, data.main.pressure, data.main.humidity, data.wind.speed, data.clouds.all))
-  console.log(response)
 }
 
 export const getMainDataByCity = (city) => async (dispatch) => {

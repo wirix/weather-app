@@ -2,9 +2,9 @@ import styles from './Weather.module.css'
 import stylesBtn from './../Form/Form.module.css'
 import Form from '../Form/Form'
 import { useState } from 'react'
-import PredictsContainer from '../Predicts/PredictsContainer'
 import Preloader from '../Preloader/Preloader'
 import Card from './Card/Card'
+import PredictsContainer from '../Predicts/PredictsContainer'
 
 const Weather = (props) => {
   let [editMode, setEditMode] = useState(false)
@@ -34,7 +34,7 @@ const Weather = (props) => {
             : <StaticForm />
         }
         <Card description={props.description} temperature={props.temperature} city={props.city} icon={props.icon}/>
-        <PredictsContainer />
+        <PredictsContainer predicts={props.predicts} />
       </div>
     </div>
   )
