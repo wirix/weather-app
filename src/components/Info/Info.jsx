@@ -23,29 +23,6 @@ const Info = (props) => {
       setEditMode(false)
     }, 950);
   }
- 
-  const addNum = (num) => {
-    if (num >= 10) {
-      return num
-    } else {
-      return `0${num}`
-    }
-  }
-  let arrOfMonths = ['Январь', 'февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
-  let arrOfDays = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
-
-  let newDate = new Date()
-  let year = newDate.getFullYear()
-  let month = newDate.getMonth()
-  let date = newDate.getDate()
-  let day = newDate.getDay()
-  let hours = newDate.getHours()
-  let minutes = newDate.getMinutes()
-
-  let sortedPredicts = []
-  for (let i = 0; i < (props.predicts.length / 8); i++) {
-    sortedPredicts = [...sortedPredicts, props.predicts.filter(p => new Date().getDate() + i === new Date(p.dt_txt).getDate())]
-  }
 
   return (
     <div className={styles.info}>
@@ -59,14 +36,14 @@ const Info = (props) => {
             <i className="ri-more-fill"></i>
           </div>
           <div className={styles.weather}>
-            <div className={styles.date}>{arrOfDays[day]}, {date} {arrOfMonths[month]} {year} - {hours}:{addNum(minutes)}</div>
+            <div className={styles.date}>{props.arrOfDays[props.day]}, {props.date} {props.arrOfMonths[props.month]} {props.year} - {props.hours}:{props.addNum(props.minutes)}</div>
             <div className={styles.img}>
               <img src={`http://openweathermap.org/img/wn/${props.icon}@2x.png`} alt="" />
             </div>
             <div className={styles.temperature}>{props.temperature}º C</div>
             <div className={styles.description}>{props.description}</div>
             <div className={styles.update}>
-              Обновление: {hours}:{addNum(minutes)}
+              Обновление: {props.hours}:{props.addNum(props.minutes)}
               {
                 !editMode
                   ? <img className={styles.reload} src={reloadStatic} onClick={() => reload()} alt="" />
@@ -78,9 +55,9 @@ const Info = (props) => {
       </div>
       <div className={styles.container}>
         <div className={styles.title__black}>Погода</div>
-        <SwiperItems predicts={sortedPredicts[Number(props.router.params.list) - 1]} />
+        <SwiperItems predicts={props.predicts[Number(props.router.params.list) - 1]} />
       </div>
-      <InfoContainer predicts={sortedPredicts[Number(props.router.params.list) - 1]} list={Number(props.router.params.list) - 1} />
+      <InfoContainer predicts={props.predicts[Number(props.router.params.list) - 1]} list={Number(props.router.params.list) - 1} />
     </div>
   )
 }

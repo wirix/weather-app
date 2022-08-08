@@ -6,28 +6,16 @@ const PredictsItem = (props) => {
   let predictDate = new Date(props.predicts[0].dt_txt).getDate() /// for array(left side) and find numPage
   let predictMonth = new Date(props.predicts[0].dt_txt).getMonth() + 1
 
-  const setMaxTemperature = (arr) => {
-    let arrMaxTemperature = []
+  const setTemperature = (arr, modeTemp, typeTemp) => {
+    let arrTemperature = []
     for (let i = 0; i < arr.length; i++) {
-      arrMaxTemperature = [...arrMaxTemperature, arr[i].main.temp_max]
+      arrTemperature = [...arrTemperature, arr[i].main[typeTemp]]
     }
-    let maxTemperature = Math.round(Math.max.apply(null, arrMaxTemperature))
-    if (maxTemperature > 0) {
-      return `+${maxTemperature}`
+    let temperature = Math.round(modeTemp.apply(null, arrTemperature))
+    if (temperature > 0) {
+      return `+${temperature}`
     } else {
-      return maxTemperature
-    }
-  }
-  const setMinTemperature = (arr) => {
-    let arrMinTemperature = []
-    for (let i = 0; i < arr.length; i++) {
-      arrMinTemperature = [...arrMinTemperature, arr[i].main.temp_min]
-    }
-    let minTemperature = Math.round(Math.min.apply(null, arrMinTemperature))
-    if (minTemperature > 0) {
-      return `+${minTemperature}`
-    } else {
-      return minTemperature
+      return temperature
     }
   }
 
@@ -64,9 +52,9 @@ const PredictsItem = (props) => {
         <div className={styles.info}>
           <span className={styles.title}>{setDate(predictMonth, predictDate)}</span>
           <span className={styles.info__temp}>
-            <span className={styles.max__temp}>{setMaxTemperature(props.predicts)}º</span>
+            <span className={styles.max__temp}>{setTemperature(props.predicts, Math.max, 'temp_max')}º</span>
             <span className={styles.slash}> / </span>
-            <span className={styles.min__temp}>{setMinTemperature(props.predicts)}º</span>
+            <span className={styles.min__temp}>{setTemperature(props.predicts, Math.min, 'temp_min')}º</span>
           </span>
           <i className="ri-arrow-right-s-line"></i>
         </div>

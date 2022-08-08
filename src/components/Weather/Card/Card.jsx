@@ -12,26 +12,7 @@ const Card = (props) => {
   const integer = (num) => {
     return num.toFixed(0)
   }
-
-  const addNum = (num) => {
-    if (num >= 10) {
-      return num
-    } else {
-      return `0${num}`
-    }
-  }
-
-  let arrOfMonths = ['Январь', 'февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
-  let arrOfDays = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
   
-  let newDate = new Date()
-  let year = newDate.getFullYear()
-  let month = newDate.getMonth()
-  let date = newDate.getDate()
-  let day = newDate.getDay()
-  let hours = newDate.getHours()
-  let minutes = newDate.getMinutes()
-
   const reload = () => {
     if (!editMode) {
       setEditMode(true)
@@ -47,8 +28,8 @@ const Card = (props) => {
   return (
     <div className={styles.content}>
       <div className={styles.info}>
-        <div className={styles.day}>{arrOfDays[day]}, {date} {arrOfMonths[month]} {year}</div>
-        <div className={styles.time}>{hours}:{addNum(minutes)}</div>
+        <div className={styles.day}>{props.arrOfDays[props.day]}, {props.date} {props.arrOfMonths[props.month]} {props.year}</div>
+        <div className={styles.time}>{props.hours}:{props.addNum(props.minutes)}</div>
       </div>
       <div className={styles.current__data}>
         <img alt='' src={`http://openweathermap.org/img/wn/${props.icon}@2x.png`} />
@@ -58,7 +39,7 @@ const Card = (props) => {
         </div>
       </div>
       <div className={styles.update}>
-        Обновление: {hours}:{addNum(minutes)} 
+        Обновление: {props.hours}:{props.addNum(props.minutes)} 
         {
           !editMode
             ? <img className={styles.reload} src={reloadStatic} onClick={() => reload()} alt="" />

@@ -7,7 +7,6 @@ import windyLine from '../../../assets/weather-icons/windy-line.jpg'
 const InfoLower = (props) => {
   let aqiForecast = props.aqiForecast[0 + props.list][24 - new Date().getHours() - 1]
   let predicts = props.predicts[0]
-  debugger
   return (
     <div className={styles.container}>
       <div className={styles.blocks}>

@@ -3,12 +3,12 @@ import stylesBtn from './../Form/Form.module.css'
 import Form from '../Form/Form'
 import { useState } from 'react'
 import Preloader from '../Preloader/Preloader'
-import Card from './Card/Card'
 import PredictsContainer from '../Predicts/PredictsContainer'
+import CardContainer from './Card/CardContainer'
 
 const Weather = (props) => {
   let [editMode, setEditMode] = useState(false)
-  if (!props.temperature) {
+  if (!props.predicts) {
     return <Preloader />
   }
 
@@ -33,7 +33,7 @@ const Weather = (props) => {
               getDataNextThreeHoursByCity={props.getDataNextThreeHoursByCity} />
             : <StaticForm />
         }
-        <Card description={props.description} temperature={props.temperature} city={props.city} icon={props.icon}/>
+        <CardContainer description={props.description} temperature={props.temperature} city={props.city} icon={props.icon}/>
         <PredictsContainer predicts={props.predicts} />
       </div>
     </div>
