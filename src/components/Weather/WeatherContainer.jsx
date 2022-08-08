@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux"
-import { setGeolocation, getMainData, getDataNextThreeHoursByCity, getDataNextThreeHours, setAQI } from "../../redux/weather-reducer";
+import { setGeolocation, getMainData, getDataNextThreeHoursByCity, getDataNextThreeHours, setForecastAQI } from "../../redux/weather-reducer";
 import Weather from "./Weather"
 import { getMainDataByCity } from "../../redux/weather-reducer"
 import Preloader from "../Preloader/Preloader";
@@ -17,7 +17,7 @@ class WeatherContainer extends React.Component {
     if (this.props.latitude !== prevProps.latitude) {
       this.props.getMainData(this.props.latitude, this.props.longitude)
       this.props.getDataNextThreeHours(this.props.latitude, this.props.longitude)
-      this.props.setAQI(this.props.latitude, this.props.longitude)
+      this.props.setForecastAQI(this.props.latitude, this.props.longitude)
     }
   }
   
@@ -44,6 +44,6 @@ let mapStateToProps = (state) => ({
   icon: state.weather.icon,
 })
 
-let mapDispatchToProps = { setGeolocation, setAQI, getDataNextThreeHours, getMainData, getMainDataByCity, getDataNextThreeHoursByCity }
+let mapDispatchToProps = { setGeolocation, getDataNextThreeHours, getMainData, getMainDataByCity, getDataNextThreeHoursByCity, setForecastAQI }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WeatherContainer)

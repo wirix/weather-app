@@ -3,7 +3,6 @@ import Preloader from "../Preloader/Preloader";
 import Predicts from "./Predicts";
 
 const PredictsContainer = (props) => {
-  debugger
   return (
     <>
       {

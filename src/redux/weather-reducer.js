@@ -3,7 +3,7 @@ import { currentWeather } from "../api/api"
 const SET_GEOLOCATION = 'SET_GEOLOCATION'
 const SET_MAIN_DATA = 'SET_MAIN_DATA'
 const SET_DATA_NEXT_THREE_HOURS_BY_CITY = 'GET_DATA_NEXT_THREE_HOURS_BY_CITY'
-const GET_AQI = 'GET_AQI'
+const GET_FORECAST_AQI = 'GET_FORECAST_AQI'
 
 let initialState = {
   latitude: null,
@@ -13,8 +13,7 @@ let initialState = {
   predicts: null,
   description: null,
   icon: null,
-  aqi: null,
-  arrAQI: null,
+  aqiForecast: null,
   pressure: null,
   humidity: null,
   wind: null,
@@ -46,10 +45,10 @@ const WeatherReducer = (state = initialState, action) => {
         ...state,
         predicts: action.predicts
       }
-    case GET_AQI:
+    case GET_FORECAST_AQI:
       return {
         ...state,
-        aqi: action.aqi
+        aqiForecast: action.aqiForecast
       }
     default:
       return state
@@ -59,7 +58,7 @@ const WeatherReducer = (state = initialState, action) => {
 export const setGeolocation = (latitude, longitude) => ({ type: SET_GEOLOCATION, latitude, longitude })
 export const setMainData = (temperature, city, description, icon, pressure, humidity, wind, clouds) => ({ type: SET_MAIN_DATA, temperature, city, description, icon, pressure, humidity, wind, clouds })
 export const setDataNextThreeHours = (predicts) => ({ type: SET_DATA_NEXT_THREE_HOURS_BY_CITY, predicts })
-export const getAQI = (aqi) => ({ type: GET_AQI, aqi })
+export const getForecastAQI = (aqiForecast) => ({ type: GET_FORECAST_AQI, aqiForecast })
 
 export const getMainData = (latitude, longitude) => async (dispatch) => {
   let response = await currentWeather.getCurrentData(latitude, longitude)
@@ -83,9 +82,9 @@ export const getDataNextThreeHoursByCity = (city) => async (dispatch) => {
   dispatch(setDataNextThreeHours(response.data.list))
 }
 
-export const setAQI = (latitude, longitude) => async (dispatch) => {
-  let response = await currentWeather.getAQI(latitude, longitude)
-  dispatch(getAQI(response.data.list[0].main.aqi))
+export const setForecastAQI = (latitude, longitude) => async (dispatch) => {
+  let response = await currentWeather.getForecastAQI(latitude, longitude)
+  dispatch(getForecastAQI(response.data))
 }
 
 export default WeatherReducer

@@ -27,8 +27,8 @@ export const currentWeather = {
   },
   getAQI(latitude, longitude) {
     return axios.get(`${base.url}air_pollution?appid=${base.key}&lat=${latitude}&lon=${longitude}`)
-    // .then(response => {
-    //   debugger
-    // })
-  }
+  },
+  getForecastAQI(latitude, longitude) {
+    return axios.get(`${base.url}air_pollution/forecast?appid=${base.key}&lat=${latitude}&lon=${longitude}`)
+  },
 }
