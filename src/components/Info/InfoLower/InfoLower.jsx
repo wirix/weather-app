@@ -21,22 +21,32 @@ const InfoLower = (props) => {
     } else {
       predicts = props.predicts[props.hourOfLink / 3]
     }
-  } else if (props.predicts.length === 7) {
-    predicts = props.predicts[props.hourOfLink / 3 - 1]
-  } else if (props.predicts.length === 6) {
-    predicts = props.predicts[props.hourOfLink / 3 - 2]
-  } else if (props.predicts.length === 5) {
-    predicts = props.predicts[props.hourOfLink / 3 - 3]
-  } else if (props.predicts.length === 4) {
-    predicts = props.predicts[props.hourOfLink / 3 - 4]
-  } else if (props.predicts.length === 3) {
-    predicts = props.predicts[props.hourOfLink / 3 - 5]
-  } else if (props.predicts.length === 2) {
-    predicts = props.predicts[props.hourOfLink / 3 - 6]
-  } else if (props.predicts.length === 1) {
-    predicts = props.predicts[props.hourOfLink / 3 - 7]
-  } else {
-    console.log('абоба')
+  } 
+
+  switch(props.predicts.length) {
+    case 7: 
+      predicts = props.predicts[props.hourOfLink / 3 - 1]
+      break
+    case 6:
+      predicts = props.predicts[props.hourOfLink / 3 - 2]
+      break
+    case 5:
+      predicts = props.predicts[props.hourOfLink / 3 - 3]
+      break
+    case 4:
+      predicts = props.predicts[props.hourOfLink / 3 - 4]
+      break
+    case 3:
+      predicts = props.predicts[props.hourOfLink / 3 - 5]
+      break
+    case 2:
+      predicts = props.predicts[props.hourOfLink / 3 - 6]
+      break
+    case 1:
+      predicts = props.predicts[props.hourOfLink / 3 - 7]
+      break
+    default:
+      break
   }
 
   return (

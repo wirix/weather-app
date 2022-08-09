@@ -6,6 +6,6 @@ let mapStateToProps = (state) => ({
   aqiForecast: getAQI(state),
 })
 
-let InfoContainer = connect(mapStateToProps, null)(InfoLower)
+let InfoLowerContainer = connect(mapStateToProps, null)(InfoLower)
 
-export default InfoContainer
+export default InfoLowerContainer

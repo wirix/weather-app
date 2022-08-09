@@ -4,10 +4,9 @@ import { useEffect, useState } from 'react'
 import reloadStatic from '../../assets/ReloadStatic.svg'
 import reloadAnimated from '../../assets/ReloadAnimated.svg'
 import SwiperItem from '../Predicts/PredictsItem/SwiperItem/SwiperItem'
-import InfoContainer from './InfoLower/InfoLowerContainer'
+import InfoLowerContainer from './InfoLower/InfoLowerContainer'
 
 const Info = (props) => {
-  debugger
   let [editMode, setEditMode] = useState(false)
   useEffect(() => {
 
@@ -74,20 +73,15 @@ const Info = (props) => {
         {
           !dayOfLink
           ? <div className={styles.container}>
-              <div className={styles.title__black}>Погода на сегодня</div>
+              <div className={styles.title__black}>Погода</div>
               <SwiperItem predicts={props.predicts[Number(props.router.params.list) - 1]} />
             </div>
-          : null
-        }
-        {
-          dayOfLink
-          ? <InfoContainer
-              predicts={props.predicts[setLink(props.router.params.list, props.router.params.time)]}
-              list={Number(props.router.params.list)}
-              dayOfLink={dayOfLink}
-              hourOfLink={hourOfLink}
-            />
-          : null
+          : <InfoLowerContainer
+            predicts={props.predicts[setLink(props.router.params.list, props.router.params.time)]}
+            list={Number(props.router.params.list)}
+            dayOfLink={dayOfLink}
+            hourOfLink={hourOfLink}
+          />
         }
     </div>
   )

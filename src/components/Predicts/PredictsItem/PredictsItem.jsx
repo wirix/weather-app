@@ -51,11 +51,11 @@ const PredictsItem = (props) => {
       <NavLink to={`/info/${list}`}>
         <div className={styles.info}>
           <span className={styles.title}>{setDate(predictMonth, predictDate)}</span>
-          <span className={styles.info__temp}>
+          <div className={styles.info__temp}>
             <span className={styles.max__temp}>{setTemperature(props.predicts, Math.max, 'temp_max')}º</span>
             <span className={styles.slash}> / </span>
             <span className={styles.min__temp}>{setTemperature(props.predicts, Math.min, 'temp_min')}º</span>
-          </span>
+          </div>
           <i className="ri-arrow-right-s-line"></i>
         </div>
       </NavLink>

@@ -87,4 +87,10 @@ export const setForecastAQI = (latitude, longitude) => async (dispatch) => {
   dispatch(getForecastAQI(response.data))
 }
 
+export const setStartData = (latitude, longitude) => (dispatch) => {
+  dispatch(getMainData(latitude, longitude))
+  dispatch(getDataNextThreeHours(latitude, longitude))
+  dispatch(setForecastAQI(latitude, longitude))
+}
+
 export default WeatherReducer

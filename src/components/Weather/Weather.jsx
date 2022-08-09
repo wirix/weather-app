@@ -11,11 +11,14 @@ const Weather = (props) => {
   if (!props.predicts) {
     return <Preloader />
   }
+  const returnGeolocation = () => {
+    props.setStartData(props.latitude, props.longitude)
+  }
 
   const StaticForm = () => (
     <div className={styles.staticInput}>
       <div className={styles.input}>
-        <i className="ri-map-pin-line"></i>
+        <i className="ri-map-pin-line" onClick={() => returnGeolocation()}></i>
         <div className={styles.input__text}>{props.city}</div>
       </div>
       <button className={stylesBtn.btn__send} type={'submit'} onClick={() => setEditMode(true)}>
