@@ -3,10 +3,11 @@ import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import reloadStatic from '../../assets/ReloadStatic.svg'
 import reloadAnimated from '../../assets/ReloadAnimated.svg'
-import SwiperItems from '../Predicts/PredictsItem/SwiperItems/SwiperItems'
+import SwiperItem from '../Predicts/PredictsItem/SwiperItem/SwiperItem'
 import InfoContainer from './InfoLower/InfoLowerContainer'
 
 const Info = (props) => {
+  debugger
   let [editMode, setEditMode] = useState(false)
   useEffect(() => {
 
@@ -23,6 +24,23 @@ const Info = (props) => {
       setEditMode(false)
     }, 950);
   }
+
+  let dayOfLink
+  let hourOfLink
+  if (props.router.params.time) {
+    let timeParams = props.router.params.time
+    dayOfLink = Number(timeParams.split('-')[0])
+    hourOfLink = Number(timeParams.split('-')[1])
+  }
+
+  const setLink = (listParams ,timeParams) => {
+    if (!listParams) {
+      return dayOfLink - new Date().getDate()
+    } else {
+      return Number(listParams) - 1
+    }
+  }
+  
 
   return (
     <div className={styles.info}>
@@ -53,11 +71,24 @@ const Info = (props) => {
           </div>
         </div>
       </div>
-      <div className={styles.container}>
-        <div className={styles.title__black}>Погода</div>
-        <SwiperItems predicts={props.predicts[Number(props.router.params.list) - 1]} />
-      </div>
-      <InfoContainer predicts={props.predicts[Number(props.router.params.list) - 1]} list={Number(props.router.params.list) - 1} />
+        {
+          !dayOfLink
+          ? <div className={styles.container}>
+              <div className={styles.title__black}>Погода на сегодня</div>
+              <SwiperItem predicts={props.predicts[Number(props.router.params.list) - 1]} />
+            </div>
+          : null
+        }
+        {
+          dayOfLink
+          ? <InfoContainer
+              predicts={props.predicts[setLink(props.router.params.list, props.router.params.time)]}
+              list={Number(props.router.params.list)}
+              dayOfLink={dayOfLink}
+              hourOfLink={hourOfLink}
+            />
+          : null
+        }
     </div>
   )
 }

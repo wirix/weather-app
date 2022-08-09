@@ -14,6 +14,9 @@ const App = (props) => {
           <Route path='/info' element={<InfoContainer />} >
             <Route path=':list' element={<InfoContainer />} />
           </Route>
+          <Route path='/infoTime' element={<InfoContainer />} >
+            <Route path=':time' element={<InfoContainer />} />
+          </Route>
           <Route path='*' element={<ErrorPage />} />
         </Routes>
       </div>
