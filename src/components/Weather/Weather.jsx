@@ -37,7 +37,7 @@ const Weather = (props) => {
             : <StaticForm />
         }
         <CardContainer description={props.description} temperature={props.temperature} city={props.city} icon={props.icon}/>
-        <PredictsContainer predicts={props.predicts} />
+        <PredictsContainer />
       </div>
     </div>
   )

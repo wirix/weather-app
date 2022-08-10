@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import reloadStatic from '../../assets/ReloadStatic.svg'
 import reloadAnimated from '../../assets/ReloadAnimated.svg'
-import SwiperItem from '../Predicts/PredictsItem/SwiperItem/SwiperItem'
 import InfoLowerContainer from './InfoLower/InfoLowerContainer'
+import SwiperItemContainer from '../Predicts/PredictsItem/SwiperItem/SwiperItemContainer'
 
 const Info = (props) => {
   let [editMode, setEditMode] = useState(false)
@@ -74,7 +74,7 @@ const Info = (props) => {
           !dayOfLink
           ? <div className={styles.container}>
               <div className={styles.title__black}>Погода</div>
-              <SwiperItem predicts={props.predicts[Number(props.router.params.list) - 1]} />
+              <SwiperItemContainer predicts={props.predicts[Number(props.router.params.list) - 1]} />
             </div>
           : <InfoLowerContainer
             predicts={props.predicts[setLink(props.router.params.list, props.router.params.time)]}

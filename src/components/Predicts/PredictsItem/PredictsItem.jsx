@@ -1,6 +1,5 @@
 import styles from './PredictsItem.module.css'
 import { NavLink } from 'react-router-dom'
-import SwiperItem from './SwiperItem/SwiperItem';
 
 const PredictsItem = (props) => {
   let predictDate = new Date(props.predicts[0].dt_txt).getDate() /// for array(left side) and find numPage
@@ -59,7 +58,7 @@ const PredictsItem = (props) => {
           <i className="ri-arrow-right-s-line"></i>
         </div>
       </NavLink>
-      <SwiperItem predicts={props.predicts} />
+      {/* <SwiperItem predicts={props.predicts} /> */}
     </div>
     
   )

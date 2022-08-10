@@ -9,6 +9,7 @@ const SwiperItem = (props) => {
   const integer = (num) => {
     return num.toFixed(0)
   }
+
   const intHour = (hour) => {
     const intHour = new Date(`${hour}`).getHours()
     if (intHour > 12) {
@@ -32,7 +33,7 @@ const SwiperItem = (props) => {
         props.predicts.filter(p => new Date().getHours() < new Date(p.dt_txt).getHours() || new Date().getDate() < new Date(p.dt_txt).getDate() ).map(p => (
           <SwiperSlide key={p.dt_txt}>
             <NavLink className={styles.item} 
-                to={`/infoTime/${new Date(p.dt_txt).getDate()}-${new Date(p.dt_txt).getHours()}`}>
+                to={`${new Date(p.dt_txt).getDate()}-${new Date(p.dt_txt).getHours()}`}>
               <img src={`http://openweathermap.org/img/wn/${p.weather[0].icon}@2x.png`} alt="" />
               <div className={styles.temperature}>{integer(p.main.temp)}º</div>
               <div className={styles.time}>{intHour(p.dt_txt)}</div>

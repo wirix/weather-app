@@ -3,8 +3,11 @@ import blazeLine from '../../../assets/weather-icons/blaze-line.jpg'
 import mistLine from '../../../assets/weather-icons/mist-line.jpg'
 import hazeLine from '../../../assets/weather-icons/haze-2-line.jpg'
 import windyLine from '../../../assets/weather-icons/windy-line.jpg'
+import { useNavigate } from 'react-router-dom'
 
 const InfoLower = (props) => {
+  let navigate = useNavigate()
+
   let predicts = props.predicts[0]
 
   let aqiForecast
@@ -52,7 +55,7 @@ const InfoLower = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.blocks}>
-        <div className={styles.title__black}>Информация</div>
+        <div className={styles.title__black}> <i onClick={() => navigate('')} className="ri-arrow-left-s-line"></i>Информация</div>
         <div className={styles.items}>
           <div className={styles.item__big}>
             <div className={styles.count__big}>
