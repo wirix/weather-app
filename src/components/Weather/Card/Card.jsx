@@ -9,6 +9,8 @@ const Card = (props) => {
 
   }, [editMode])
 
+  let currentHour = new Date().getHours()
+
   const integer = (num) => {
     return num.toFixed(0)
   }
@@ -26,7 +28,9 @@ const Card = (props) => {
   }
 
   return (
-    <div className={styles.content}>
+    <div className={currentHour >= 18
+    ? `${styles.content} ${styles.contentDark}` 
+      : `${styles.content} ${styles.contentLite}`}>
       <div className={styles.info}>
         <div className={styles.day}>{props.arrOfDays[props.day]}, {props.date} {props.arrOfMonths[props.month]} {props.year}</div>
         <div className={styles.time}>{props.hours}:{props.addNum(props.minutes)}</div>

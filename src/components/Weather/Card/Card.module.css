@@ -6,8 +6,14 @@
   width: 100%;
   border-radius: 10px;
   padding: 24px;
+}
 
+.contentDark {
   background: linear-gradient(90deg,#4C4E53, #0B1223);
+}
+
+.contentLite {
+  background: linear-gradient(90deg,#74B0FF, #0455BF);
 }
 
 .info {

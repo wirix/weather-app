@@ -14,7 +14,6 @@ const Form = (props) => {
       {({ values, handleBlur, handleChange, handleSubmit, errors, touched, isValid, dirty }) => (
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.input}>
-            <i className="ri-map-pin-line"></i>
             <input 
               name={'city'}
               autoFocus={true}

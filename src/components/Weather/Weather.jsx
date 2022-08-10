@@ -5,9 +5,15 @@ import { useState } from 'react'
 import Preloader from '../Preloader/Preloader'
 import PredictsContainer from '../Predicts/PredictsContainer'
 import CardContainer from './Card/CardContainer'
+// import { CSSTransition } from 'react-transition-group'
 
 const Weather = (props) => {
   let [editMode, setEditMode] = useState(false)
+  // let [menu, setMenu] = useState(false)
+  // useEffect(() => {
+
+  // }, [menu])
+
   if (!props.predicts) {
     return <Preloader />
   }
@@ -15,8 +21,24 @@ const Weather = (props) => {
     props.setStartData(props.latitude, props.longitude)
   }
 
+  // const openMenu = (bool) => {
+  //   setMenu(bool)
+  // }
+
+  // const MenuContent = () => {
+  //   return (
+  //     <div className={styles.open}>
+  //       ffff
+  //       <i className="ri-close-line" onClick={() => openMenu(false)}></i>
+  //     </div>
+  //   )
+  // }
+
   const StaticForm = () => (
     <div className={styles.staticInput}>
+      <i className="ri-menu-line"
+      //  onClick={() => openMenu(true)}
+       ></i>
       <div className={styles.input}>
         <i className="ri-map-pin-line" onClick={() => returnGeolocation()}></i>
         <div className={styles.input__text}>{props.city}</div>

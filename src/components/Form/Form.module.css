@@ -1,6 +1,6 @@
 .form {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 
   padding-top: 15px;
@@ -16,7 +16,7 @@
   border: 0;
   outline: 0;
 
-  width: 230px;
+  width: 260px;
   
   font-size: 15px;
   font-weight: 600;
@@ -28,14 +28,18 @@
 }
 
 .btn__send {
+  margin: 0;
+  padding: 0;
   border: 0;
   outline: 0;
   background: transparent;
 }
 
-.btn__send i, .input i {
+.btn__send i, .form i {
   font-size: 20px;
   font-weight: 700;
   color: #2E3A59;
   cursor: pointer;
+  margin: 0;
+  padding: 0;
 }
